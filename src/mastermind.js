@@ -13,13 +13,16 @@ const Rules = React.createClass({
 				'info': true,
 				'hidden': !this.props.rules
 			});
-		const infoText = !this.props.rules ? 'Show rules' : 'Hide rules';
+		const infoText = !this.props.rules ? 'Regeln anzeigen' : 'Regeln verbergen';
 
 		return (
 			<div className="rules">
 				<span className="rules-toggle" onClick={this.props.toggleRules}>{infoText}</span>
 				<p className={className}>
-				Try to guess the pattern, in both order and color, within ten turns. After submitting a row, a small black peg is placed for each code peg from the guess which is correct in both color and position. A white peg indicates the existence of a correct color code peg placed in the wrong position. More info on <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank">Wikipedia</a>.
+				Versuchen Sie den Farbcode zu knacken. <br></br>
+				Sie haben 10 Versuche. Nach jedem Versuch erhalten Sie einen Hinweis, wie gut Sie liegen. <br></br>
+				Ein schwarzer Punkt bedeutet, dass sich eine Farbe an der richtigen Stelle befindet. Ein weißer Punkt bedeutet, dass Sie eine Farbe richtig erraten haben, diese aber an der falschen Stelle ist. Ein x bedeutet, dass die Farbe in dem Code nicht vorkommt. <br></br>
+				Die Position der Hinweise sagt nichts darüber aus, auf welcher Position sich die entsprechende Farbe befindet. <br></br>
 				</p>
 			</div>
 		);
@@ -217,13 +220,13 @@ const EndGame = React.createClass({
 				'success': this.props.success,
 				'failure': !this.props.success
 			});
-		const infoText = this.props.success ? 'Congratulations!' : 'GAME OVER!';
+		const infoText = this.props.success ? 'Glückwunsch!' : 'GAME OVER!';
 
 		return (
 			<div className={endGameInfoClass}>
 				<div className={endGameStatusClass}>
 					<h2 className="endgame-header">{infoText}</h2>
-					<button className="endgame-btn" onClick={this.props.reloadGame}>PLAY AGAIN</button>
+					<button className="endgame-btn" onClick={this.props.reloadGame}>NEU STARTEN</button>
 				</div>
 				<div className="endgame-relative endgame-overlay"></div>
 			</div>
@@ -267,11 +270,16 @@ const Mastermind = React.createClass({
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
+	getFakeRandom: function(i) {
+		const fakeRandom = [1, 2, 0, 5];
+		return fakeRandom[i];
+	},
+
 	getCode: function() {
 		const code = new Map();
 
 		let generateCode = (i) => {
-			code.set(i, this.props.colors.get(this.getRandomArbitrary()));
+			code.set(i, this.props.colors.get(this.getFakeRandom(i)));
 		};
 
 		times(this.props.codeLength)(generateCode);
