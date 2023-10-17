@@ -13,7 +13,9 @@ const Rules = React.createClass({
 				'info': true,
 				'hidden': !this.props.rules
 			});
-		const infoText = !this.props.rules ? 'Regeln anzeigen' : 'Regeln verbergen';
+		//const infoText = !this.props.rules ? 'Regeln anzeigen' : 'Regeln verbergen';
+
+		const infoText = !this.props.rules ? '' : '';
 
 		return (
 			<div className="rules">
@@ -226,13 +228,14 @@ const EndGame = React.createClass({
 			<div className={endGameInfoClass}>
 				<div className={endGameStatusClass}>
 					<h2 className="endgame-header">{infoText}</h2>
-					<button className="endgame-btn" onClick={this.props.reloadGame}>NEU STARTEN</button>
 				</div>
 				<div className="endgame-relative endgame-overlay"></div>
 			</div>
 		);
 	}
 });
+//previous "NEU STARTEN" button was under <h2 className="endgame-header">{infoText}</h2> in the previous class
+//<button className="endgame-btn" onClick={this.props.reloadGame}>NEU STARTEN</button>
 
 const Mastermind = React.createClass({
 	getInitialState: function() {
@@ -271,7 +274,7 @@ const Mastermind = React.createClass({
 	},
 
 	getFakeRandom: function(i) {
-		const fakeRandom = [1, 2, 0, 5];
+		const fakeRandom = [5, 0, 4, 1];
 		return fakeRandom[i];
 	},
 

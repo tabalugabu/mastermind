@@ -321,7 +321,7 @@ footer p {
 }
 
 /* non mobile */
-@media only screen and (min-device-width: 840px) {
+/*@media only screen and (min-device-width: 840px) { */
 	h1 {
 		font-size: 2.6rem;
 	}
@@ -335,4 +335,4 @@ footer p {
 		width: 405px;
 		margin: 30px auto 0;
 	}
-}
+/*  }  */
