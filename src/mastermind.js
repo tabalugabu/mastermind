@@ -274,7 +274,7 @@ const Mastermind = React.createClass({
 	},
 
 	getFakeRandom: function(i) {
-		const fakeRandom = [5, 0, 3, 1];
+		const fakeRandom = [2, 5, 3, 1];
 		return fakeRandom[i];
 	},
 
